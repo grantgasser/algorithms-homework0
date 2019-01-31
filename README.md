@@ -1,2 +1,2 @@
-# algorithms-homework0
-Big-O, Geometric series, Inductive proofs, Logs and Exp
+# Algorithms Homework 0
+Big-O, Geometric series, Induction, Logs and Exponents
