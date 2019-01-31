@@ -51,7 +51,7 @@ Use the Upload Site to submit your solution. These problems are a review of mate
 \begin{enumerate}
 	\item Give a simple upper bound on $1+2+4+ \dots +2^n$. Conclude that this sum is $O(2^n)$. 
 		\begin{itemize}
-			\item This can be written as $\sum_{i = 0}^{n} 2^i = 2^{n+1}-1.$ We can ignore the constant from the above table and we know that $2^{n+1} \in O(2^n).$
+			\item This can be written as $\sum_{i = 0}^{n} 2^i = 2^{n+1}-1.$ We can ignore the constant and from the above table we know that $2^{n+1} \in O(2^n).$
 		\end{itemize}
 	\item Do the same for $1+ \frac{1}{2 }+ \frac{1}{4} + \dots + \frac{1}{2^n} $ and conclude that the sum is O(1).
 		\begin{itemize}
@@ -59,7 +59,7 @@ Use the Upload Site to submit your solution. These problems are a review of mate
 			\item $\sum_{n = 0}^{\infty} (\frac{1}{2})^n = \frac{\frac{1}{2}}{1 - \frac{1}{2}} = 1$. Thus the series converges to 1. $S \in O(1)$.
 		\end{itemize}
 	\item By considering a more general series $S(n) = 1 + c + c^2 +  \dots + c^n$, establish the following very useful rule: in big-O terms, the sum of a geometric series is simply: \\
-	\textbf{Note: } In this case, c = r, the common ratio.
+	\textbf{Note: } In this case, the common ratio r = c.
 \begin{enumerate}
 \item the first term if the series is strictly decreasing, 
 	\begin{itemize}
@@ -113,6 +113,9 @@ $S(n)=1^c +2^c +3^c + \dots +n^c.$
 	\item Show that S(n) is $O(n^{c+1})$. Hint: There are n terms in the series, and each is at most ...?
     \item Show that S(n) is $ \Omega(n^{c+1})$. Hint: Look just at the second half of the series.
 \end{enumerate}
+\begin{itemize}
+	\item $S(n) = \sum_{i = 1}^{n}i^c = \frac{1}{c+1}n^{c+1}$ by definition. Let $f(n) = \frac{1}{c+1}n^{c+1}$ and $g(n) = n^{c+1}$. \\ \\ Using L'Hopital's rule: $\lim_{n\to\infty}\frac{f'(n)}{g'(n)} = \frac{n^c}{(c+1)n^c}$. Drop constant and get 1. Thus, \\ \\ $f(n) \in \Theta(n^{c+1})$. Since f(n) = S(n), $S(n) \in \Theta(n^{c+1})$. \\  \\By definition of $\Theta$, if $S(n) \in \Theta(n^{c+1})$, then $S(n) \in O(n^{c+1})$ and $S(n) \in \Omega(n^{c+1})$
+\end{itemize}
 
 
 \newpage
@@ -122,11 +125,40 @@ $m = 2^p$. In this class, we will typically write log to mean $log_2$.
 
 			\item How many bits are needed to write down a positive integer n? Give your answer in big-O notation,
 			as a function of n, where n is the length of the number.
-			\begin{itemize}
-				\item $O(2^{n+1})$ ? 
-			\end{itemize}
-			
-			
+			\begin{tabular}{|c|c|}\hline
+				Number &  Number of bits  \\ \hline
+				0 & 0	\\ \hline
+				1 & 1	\\ \hline
+				2 & 2	\\ \hline
+				3 & 2	\\ \hline
+				4 & 3	\\ \hline
+				5 & 3	\\ \hline
+				6 & 3	\\ \hline
+				7 & 3	\\ \hline
+				8 & 4	\\ \hline
+				. & 4	\\ \hline
+				. & 4	\\ \hline
+				16 & 5	\\ \hline
+				. & 5	\\ \hline
+				. & 5	\\ \hline
+				32 & 6	\\ \hline
+				. & 6	\\ \hline
+				. & 6	\\ \hline
+				64 & 7	\\ \hline
+				. & 7	\\ \hline
+				. & 7	\\ \hline
+			\end{tabular} 
+			\hspace{10mm}
+			\begin{tabular}{|c|c|c|}\hline
+				Largest Number with n digits &  n & Number of bits  \\ \hline
+				9 & 1 & 4	\\ \hline
+				99 & 2 & 7	\\ \hline
+				999 & 3 & 10	\\ \hline
+				9999 & 4 & 14	\\ \hline
+			\end{tabular}
+			\vspace{10mm} \\ 
+			Thus, it takes $O(\lceil{n log_2(10)}\rceil)$, where $log_2(10) \approx 3.3$. \\ \\ For example, from the right table, if $n=4$, the number of bits required is $\lceil{4*3.3}\rceil = 14$. 
+			\newpage	
 			\item How many times does the following piece of code print “hello”? Assume n is an integer, and that
 			division rounds down to the nearest integer. Give your answer in big-O form, as a function of n.
 			
@@ -147,8 +179,6 @@ $m = 2^p$. In this class, we will typically write log to mean $log_2$.
 				7 & 2	\\ \hline
 				8 & 3	\\ \hline
 				9 & 3	\\ \hline
-				8 & 3	\\ \hline
-				9 & 3	\\ \hline
 				10 & 3	\\ \hline
 				11 & 3	\\ \hline
 				12 & 3	\\ \hline
@@ -157,16 +187,10 @@ $m = 2^p$. In this class, we will typically write log to mean $log_2$.
 				15 & 3	\\ \hline
 				16 & 4	\\ \hline
 			\end{tabular}
-		\vspace{5mm}
+		\hspace{10mm}
 		Looks like $O(log_2(n))$
 
 \end{enumerate}
 
 \end{enumerate}
 \end{document}
-
-
-
-
-
-
